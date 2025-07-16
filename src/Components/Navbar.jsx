@@ -3,12 +3,15 @@ import { CiShoppingCart } from "react-icons/ci";
 import { FiGithub } from "react-icons/fi";
 import { useNavigate } from 'react-router-dom';
 import { create } from 'zustand'
-const useStore = create((set) => ({
+import { games } from '../utils/Game'
+export const useStore = create((set) => ({
   current: "True",
+  search: games,
   change: (status) => set((state) => ({ current: status })),
+  searchGames: (searchValue) => set((state) => ({ search: searchValue })),
 }))
 const Navbar = () => {
-  const { current, change } = useStore()
+  const { current, change, searchGames, search } = useStore()
   const navigate = useNavigate();
   const githubLink = "https://github.com/VinitChoudhary-A"
  
@@ -21,13 +24,18 @@ const Navbar = () => {
     change(status);
     navigate('/');
   };
-  
+  const SearchHandler = (e) => {
+    const searchValue = e.target.value;
+    const filteredGames = games.filter((game) => game.name.toLowerCase().includes(searchValue.toLowerCase()));
+    searchGames(filteredGames);
+    console.log(search);
+  }
   return (
     <nav className='flex flex-row mx-8 text-white justify-between '>
       <div className='flex gap-10 flex-row'>
         <button  onClick={() => onClickHome("True")} className='font-bold cursor-pointer text-xl  '>Game Store</button>
       {current === "True" && <button onClick={() => OnClickBrowse("False")} className='font-bold cursor-pointer text-xl '>Browse Store</button>}  
-     {current === "False" && <input type="text" placeholder='Search' className='bg-gray-100/50 backdrop-blur-md rounded-full px-4 py-1 h-8 mt-4' />} 
+     {current === "False" && <input type="text" placeholder='Search Games' className='bg-gray-100/50 w-100 backdrop-blur-md rounded-full px-4  h-10 mt-3' onChange={SearchHandler}/>} 
       </div>
       <div className='flex gap-10 flex-row'>
         <button onClick={()=>{window.open(githubLink, '_blank')}}  className='flex font-bold justify-center items-center  cursor-pointer text-xl'> <FiGithub className='m-4 size-6' /> Vinit Choudhary</button>

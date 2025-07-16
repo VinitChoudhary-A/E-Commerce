@@ -1,4 +1,4 @@
-const games = [
+export const games = [
     {
         name: "Cyberpunk 2077",
         surname: "cyberpunk",
