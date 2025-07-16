@@ -1,12 +1,12 @@
-import React, { useMemo } from "react";
+import React from "react";
 import games from "../utils/Game.js";
 import { FaHeart } from "react-icons/fa";
 import { useStore } from "./Navbar.jsx";
 import Motion from "./Motion.jsx";
-const Content = useMemo(() => {
+const Content = () => {
   const { search } = useStore();
   console.log(search);
-  return (
+  return (    
     <div className="grid grid-cols-1 sm:grid-cols-2  lg:grid-cols-3 gap-6 mt-8 px-6 bg-gray-900">
       {search.map((game, index) => (
         <Motion key={game.id}>
@@ -39,6 +39,6 @@ const Content = useMemo(() => {
       ))}
     </div>
   );
-}, [search]);
+};
 
 export default Content;
