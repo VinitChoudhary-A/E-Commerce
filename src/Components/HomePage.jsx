@@ -9,7 +9,7 @@ const HomePage = () => {
     return (
 
         <div className='flex flex-col  h-screen overflow-hidden relative'>
-            <video src={background} autoPlay loop muted className='absolute inset-0 z-0 h-full w-full object-cover' />
+            <video src={background} autoPlay loop   playsInline muted className='absolute inset-0 z-0 h-full w-full object-cover' />
             <div className="absolute z-10">
                 <Navbar className="bg-transparent  backdrop-blur-md " />
                 <div className='flex flex-row w-1/3'>
