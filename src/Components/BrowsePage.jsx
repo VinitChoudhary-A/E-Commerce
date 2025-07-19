@@ -34,8 +34,8 @@ const BrowsePage = () => {
             </div>
             <div className="flex flex-row items-center space-x-6 me-8">
                 <p className="text-gray-400">Display Options:</p>
-              <button onClick={()=>{changeColumns(2)}} className="bg-gray-800  hover:bg-gray-700 text-4xl cursor-pointer text-gray-400  rounded-md"><FcMenu /> </button>
-              <button onClick={()=>{changeColumns(3)}} className="bg-gray-800 hover:bg-gray-700 text-4xl cursor-pointer text-white rounded-md"><FcGrid /> </button>
+              <button onClick={()=>{changeColumns("grid-cols-2")}} className="bg-gray-800  hover:bg-gray-700 text-4xl cursor-pointer text-gray-400  rounded-md"><FcMenu /> </button>
+              <button onClick={()=>{changeColumns("grid-cols-3")}} className="bg-gray-800 hover:bg-gray-700 text-4xl cursor-pointer text-white rounded-md"><FcGrid /> </button>
             </div>
             </div>
         <Content />    

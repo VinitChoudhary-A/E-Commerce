@@ -34,6 +34,6 @@ export const useStore = create((set) => ({
         wishlist: state.wishlist.filter((item) => item.id !== id),
       })),
       // changing grid column size
-      columns: 3,
+      columns: "grid-cols-3",
       changeColumns: (value) => set(() => ({ columns: value }))
 }));
