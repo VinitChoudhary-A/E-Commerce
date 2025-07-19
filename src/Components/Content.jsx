@@ -20,11 +20,11 @@ const Content = () => {
   );
   useEffect(() => {
     console.log("Wishlist updated:", wishlist);
-  },[wishlist])
+  },[wishlist,columns])
 if (!Array.isArray(search)) return <p className="text-white p-4">No games available.</p>;
 
   return (
-    <div className={`grid grid-cols-3  sm:grid-cols-${columns} lg:grid-cols-${columns} gap-6 mt-8 px-6 bg-gray-900`}>
+    <div className={`grid   grid-cols-${columns} gap-6 mt-8 px-6 bg-gray-900`}>
       {search.map((game) => (
         <Motion key={game.id}>
           <div
