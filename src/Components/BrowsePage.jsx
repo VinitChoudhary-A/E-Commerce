@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Sidebar from "./Sidebar";
 import Navbar from "./Navbar";
 import { FcGrid } from "react-icons/fc";
 import { FcMenu } from "react-icons/fc";
 import Content from "./Content";
+import Footer from './Footer'
+import { useStore } from "../utils/Zustand.jsx";
 const BrowsePage = () => {
+
+  const {changeColumns,columns} = useStore();
+
+  useEffect(() => {
+  console.log("No of columns",columns)
+  }, [columns]);
+
   return (
     <div className="bg-gray-900 m-0 p-0">
       <Navbar />
@@ -23,13 +32,14 @@ const BrowsePage = () => {
               <button className="bg-gray-800  px-4 text-gray-400 py-2 rounded-md">Filter by : <span className="text-blue-500">None</span></button>
               <button className="bg-gray-800 text-gray-400 px-4 py-2 rounded-md"> Clear <span className="text-blue-500">Filter</span></button>
             </div>
-            <div className="flex flex-row items-center space-x-2 me-4">
+            <div className="flex flex-row items-center space-x-6 me-8">
                 <p className="text-gray-400">Display Options:</p>
-              <button className="bg-gray-800 hover:bg-gray-700 text-4xl cursor-pointer text-white rounded-md"><FcGrid /> </button>
-              <button className="bg-gray-800  hover:bg-gray-700 text-4xl cursor-pointer text-gray-400  rounded-md"><FcMenu /> </button>
+              <button onClick={()=>{changeColumns(2)}} className="bg-gray-800  hover:bg-gray-700 text-4xl cursor-pointer text-gray-400  rounded-md"><FcMenu /> </button>
+              <button onClick={()=>{changeColumns(3)}} className="bg-gray-800 hover:bg-gray-700 text-4xl cursor-pointer text-white rounded-md"><FcGrid /> </button>
             </div>
             </div>
-        <Content />        
+        <Content />    
+        <Footer/>    
           </div>
          
         </main>

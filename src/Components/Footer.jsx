@@ -4,11 +4,11 @@ const Footer = () => {
   return (
     <footer>
         <div className="container bg-gray-900 text-white w-full">
-        <p className='flex items-center gap-4'>
+        <div className='flex items-center gap-4'>
             <SlGameController className='text-4xl hover:text-red-500 cursor-pointer mt-4 mb-4 ms-4' />
             <h1 className='text-2xl font-bold hover:text-blue-500 cursor-pointer  flex items-center
             gap-8 ms-4'>  Game Store</h1>
-            </p>
+            </div>
             <div className="grid grid-cols-4 gap-4 ms-4">
                 <div >
                     <h1 className='text-lg font-bold hover:text-blue-500 cursor-pointer'>Company</h1>

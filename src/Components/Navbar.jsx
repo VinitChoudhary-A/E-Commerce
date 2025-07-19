@@ -22,7 +22,7 @@ const Navbar = () => {
 
   const SearchHandler = (e) => {
     const searchValue = e.target.value;
-    const filteredGames = games.filter((game) =>
+    const filteredGames = search.filter((game) =>
       game.name.toLowerCase().includes(searchValue.toLowerCase())
     );
     searchGames(filteredGames);
