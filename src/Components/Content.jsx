@@ -9,10 +9,10 @@ const Content = () => {
      (game) => {
        const exists = wishlist.some((g) => g.id === game.id);
        if (exists) {
-         setShowLabel(false)
+      
          removeFromWishList(game.id);
         } else {
-        setShowLabel(true)
+      
         addToWishList(game);
       }
     },
@@ -24,7 +24,7 @@ const Content = () => {
 if (!Array.isArray(search)) return <p className="text-white p-4">No games available.</p>;
 
   return (
-    <div className={`grid grid-cols-1  sm:grid-cols-${columns} lg:grid-cols-${columns} gap-6 mt-8 px-6 bg-gray-900`}>
+    <div className={`grid grid-cols-3  sm:grid-cols-${columns} lg:grid-cols-${columns} gap-6 mt-8 px-6 bg-gray-900`}>
       {search.map((game) => (
         <Motion key={game.id}>
           <div
