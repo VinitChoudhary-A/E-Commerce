@@ -4,31 +4,26 @@ import { FiGithub } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 import { useStore } from "../utils/Zustand.jsx";
 import { games } from "../utils/Game";
-
 const Navbar = () => {
-  const { current, change, searchGames, search } = useStore();
+  const { current, change, searchGames, search,cart} = useStore();
   const navigate = useNavigate();
   const githubLink = "https://github.com/VinitChoudhary-A";
-
   const OnClickBrowse = (status) => {
     change(status);
     navigate("/browse");
   };
-
   const onClickHome = (status) => {
     change(status);
     navigate("/");
   };
-
   const SearchHandler = (e) => {
     const searchValue = e.target.value;
-    const filteredGames = search.filter((game) =>
+    const filteredGames = games.filter((game) =>
       game.name.toLowerCase().includes(searchValue.toLowerCase())
     );
     searchGames(filteredGames);
     console.log(search);
   };
-
   return (
     <nav className="flex flex-row mx-8 text-white justify-between ">
       <div className="flex gap-10 flex-row">
@@ -62,11 +57,10 @@ const Navbar = () => {
         >
           <FiGithub className="m-2 size-5" /> Vinit Choudhary
         </button>
-
-        <button className=" flex font-bold justify-center items-center  cursor-pointer text-2xl">
+        <button  onClick={() => {navigate("/cart"), change("True")}} className=" flex font-bold justify-center items-center  cursor-pointer text-2xl">
           <CiShoppingCart className="m-3" />
-          Cart:<p>0</p>
-        </button>
+          Cart:<p className="text-2xl ms-2 text-red-500 font-bold">{cart.length}</p>
+        </button>  
       </div>
     </nav>
   );
